@@ -1,0 +1,20 @@
+# Netlify configuration for the Canonly landing page (static site).
+[build]
+  publish = "."
+  # No build step — this is a hand-authored single-file static site.
+  command = ""
+
+# Sensible security headers for a public marketing page.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+# Pretty 404.
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
