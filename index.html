@@ -135,11 +135,13 @@
     <div class="kicker">The compliance layer for AI search</div>
     <h1>Win AI citations. <span class="mint">Keep legal happy.</span></h1>
     <p class="sub">Canonly is the governed content system for regulated brands. Legal approves your claims and content blocks <b>once</b>; marketing composes freely; and AI answers — ChatGPT, Perplexity, Google AI Overviews — cite the result. Think Ironclad, for regulated marketing content.</p>
-    <form class="form-row" id="heroForm" novalidate>
-      <input type="email" id="heroEmail" placeholder="Work email" aria-label="Work email" required>
+    <form class="form-row" name="early-access" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="early-access">
+      <input type="hidden" name="source" value="hero">
+      <p style="display:none"><label>Leave this empty: <input name="bot-field"></label></p>
+      <input type="email" name="email" placeholder="Work email" aria-label="Work email" required>
       <button class="btn" type="submit">Request early access</button>
     </form>
-    <div class="success" id="heroSuccess">Thanks — you're on the list. We'll be in touch about design-partner access.</div>
     <p class="microcopy">For pharma, banking, insurance & wealth brands and the agencies that serve them.</p>
     <div class="trustbar">
       <span>Built for</span> <b>Pharma &amp; Health</b> <b>Banking &amp; Fintech</b> <b>Insurance</b> <b>Wealth &amp; Advisory</b>
@@ -222,13 +224,14 @@
       </div>
       <h3>Get the playbook</h3>
       <p style="color:var(--gray);font-size:14px;margin-bottom:18px">We'll email you the PDF and occasional notes on compliance-first AEO. No spam.</p>
-      <form class="pb-form" id="pbForm" novalidate>
-        <input type="text" placeholder="First name" aria-label="First name" required>
-        <input type="email" id="pbEmail" placeholder="Work email" aria-label="Work email" required>
-        <input type="text" placeholder="Company" aria-label="Company">
+      <form class="pb-form" name="playbook-download" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="playbook-download">
+        <p style="display:none"><label>Leave this empty: <input name="bot-field"></label></p>
+        <input type="text" name="first_name" placeholder="First name" aria-label="First name" required>
+        <input type="email" name="email" placeholder="Work email" aria-label="Work email" required>
+        <input type="text" name="company" placeholder="Company" aria-label="Company">
         <button class="btn" type="submit">Send me the playbook</button>
       </form>
-      <div class="success" id="pbSuccess">Thanks! Check your inbox — the playbook is on its way.</div>
     </div>
   </div>
 </section>
@@ -252,11 +255,13 @@
   <div class="wrap">
     <h2>Be one of our first design partners.</h2>
     <p>We're onboarding a small group of regulated brands to shape the product and prove citation lift together. Early partners get hands-on onboarding and founder access.</p>
-    <form class="form-row" id="ctaForm" novalidate>
-      <input type="email" id="ctaEmail" placeholder="Work email" aria-label="Work email" required>
+    <form class="form-row" name="early-access" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="early-access">
+      <input type="hidden" name="source" value="footer-cta">
+      <p style="display:none"><label>Leave this empty: <input name="bot-field"></label></p>
+      <input type="email" name="email" placeholder="Work email" aria-label="Work email" required>
       <button class="btn" type="submit">Request early access</button>
     </form>
-    <div class="success" id="ctaSuccess" style="max-width:520px;margin:14px auto 0">Thanks — you're on the list. We'll reach out about design-partner access.</div>
   </div>
 </section>
 
@@ -279,27 +284,7 @@
   </div>
 </footer>
 
-<script>
-  // Lightweight, backend-free demo handling. To go live, point each form's
-  // submit at your email/CRM endpoint (Formspree, HubSpot, etc.) or replace
-  // handle() with a fetch() to your API. No storage is used.
-  function isEmail(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);}
-  function handle(formId, emailId, successId){
-    var f=document.getElementById(formId);
-    if(!f) return;
-    f.addEventListener('submit',function(e){
-      e.preventDefault();
-      var email=document.getElementById(emailId).value.trim();
-      if(!isEmail(email)){document.getElementById(emailId).focus();return;}
-      // TODO: send `email` (and other fields) to your endpoint here.
-      f.style.display='none';
-      var s=document.getElementById(successId);
-      s.classList.add('show');
-    });
-  }
-  handle('heroForm','heroEmail','heroSuccess');
-  handle('pbForm','pbEmail','pbSuccess');
-  handle('ctaForm','ctaEmail','ctaSuccess');
-</script>
+<!-- Forms submit natively to Netlify Forms and land on /thanks.html.
+     No JavaScript interception: success and failure are both visible. -->
 </body>
 </html>
