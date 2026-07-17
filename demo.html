@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canonly — Interactive Demo</title>
+<style>
+  :root{--navy:#1E2761;--ink:#1A2238;--ice:#CADCFC;--mint:#02C39A;--mintd:#02907A;--tint:#F0F4FB;--amber:#B45309;--line:#E3E8F4;--red:#B91C1C}
+  *{box-sizing:border-box;margin:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--tint);display:flex;min-height:100vh}
+  aside{width:216px;background:var(--navy);color:#fff;padding:20px 12px;display:flex;flex-direction:column;gap:2px;flex-shrink:0}
+  .logo{font-family:Georgia,serif;font-weight:700;letter-spacing:2px;font-size:19px;padding:0 10px 14px}
+  .logo span{color:var(--mint)}
+  .nav{border:none;background:none;color:var(--ice);text-align:left;padding:9px 10px;border-radius:8px;font-size:13.5px;font-weight:500;cursor:pointer}
+  .nav:hover{background:rgba(255,255,255,.1);color:#fff}
+  .nav.on{background:rgba(255,255,255,.14);color:#fff;font-weight:700}
+  .side-note{margin-top:auto;font-size:10.5px;color:#8fa0c8;padding:10px;line-height:1.5}
+  main{flex:1;padding:26px 30px;max-width:1000px}
+  .topbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:18px}
+  .pill{display:inline-block;border-radius:999px;padding:3px 10px;font-size:11px;font-weight:700}
+  .p-mint{background:rgba(2,195,154,.15);color:var(--mintd)} .p-amber{background:#FEF3C7;color:#92400E}
+  .p-gray{background:rgba(30,39,97,.08);color:#4a5273} .p-red{background:#FEE2E2;color:var(--red)}
+  select,input[type=text],textarea{border:1px solid rgba(30,39,97,.25);border-radius:8px;padding:8px 10px;font-size:13.5px;font-family:inherit;background:#fff}
+  .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;margin-bottom:14px}
+  h1{font-family:Georgia,serif;color:var(--navy);font-size:22px;margin-bottom:4px}
+  h2{font-family:Georgia,serif;color:var(--navy);font-size:15.5px;margin-bottom:8px}
+  .sub{color:#5A6274;font-size:13px;margin-bottom:14px}
+  .btn{background:var(--mint);color:var(--navy);font-weight:700;border:none;border-radius:8px;padding:9px 14px;font-size:13px;cursor:pointer}
+  .btn:hover{filter:brightness(1.05)} .btn:disabled{opacity:.45;cursor:default}
+  .btn2{background:#fff;color:var(--navy);border:1.5px solid rgba(30,39,97,.25);font-weight:600;border-radius:8px;padding:8px 12px;font-size:12.5px;cursor:pointer}
+  .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th{text-align:left;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:#6b7390;padding:6px 8px;border-bottom:1px solid var(--line)}
+  td{padding:9px 8px;border-bottom:1px solid #eef1f8;vertical-align:top}
+  .seg{border:1.5px solid rgba(2,195,154,.5);background:rgba(2,195,154,.06);border-radius:9px;padding:8px 10px;margin-bottom:7px;font-size:13px}
+  .seg.text{border-color:#FCD34D;background:#FFFBEB}
+  .seg .k{font-size:10px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--mintd)}
+  .seg.text .k{color:#92400E}
+  .seg .x{float:right;border:none;background:none;color:var(--red);font-weight:700;cursor:pointer}
+  .violate{background:#FEF2F2;border:1px solid #FECACA;border-radius:10px;padding:10px 12px;color:#991B1B;font-size:13px;margin-bottom:10px}
+  .banner{background:var(--tint);border-radius:10px;padding:10px 12px;font-size:13px;color:#3c4468}
+  .stat{font-family:Georgia,serif;font-size:26px;font-weight:700;color:var(--navy)}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .muted{color:#6b7390;font-size:12px}
+  .audit-line{font-size:12px;padding:5px 0;border-bottom:1px solid #eef1f8;color:#3c4468}
+  .pub{background:#fff;border:1px solid var(--line);border-radius:12px;padding:26px 30px}
+  .pub h3{font-family:Georgia,serif;color:var(--navy);font-size:19px;margin:14px 0 6px}
+  .toast{position:fixed;bottom:18px;right:18px;background:var(--navy);color:#fff;padding:11px 16px;border-radius:10px;font-size:13px;box-shadow:0 8px 30px rgba(0,0,0,.25);opacity:0;transition:opacity .25s;max-width:340px}
+  code{background:var(--tint);padding:1px 5px;border-radius:4px;font-size:12px}
+  pre{background:#12183b;color:#cdd7f5;border-radius:10px;padding:12px;font-size:11px;overflow:auto}
+</style>
+</head>
+<body>
+<aside>
+  <div class="logo">CANONLY<span>.</span></div>
+  <button class="nav on" data-v="dash">Dashboard</button>
+  <button class="nav" data-v="claims">Claim Library</button>
+  <button class="nav" data-v="compose">Compose</button>
+  <button class="nav" data-v="review">Review Queue</button>
+  <button class="nav" data-v="pages">Pages</button>
+  <button class="nav" data-v="cite">Citations</button>
+  <div class="side-note"><b style="color:#fff">Interactive sandbox.</b> Same rules engine as the production app, running in your browser. State resets on refresh. The real app adds server enforcement, logins, and an append-only audit trail.</div>
+</aside>
+<main>
+  <div class="topbar">
+    <span class="pill p-amber">SANDBOX DEMO</span>
+    <label class="muted">Company:</label>
+    <select id="orgSel"></select>
+    <label class="muted">You are:</label>
+    <select id="roleSel"></select>
+    <span class="muted" id="roleHint"></span>
+  </div>
+  <div id="view"></div>
+</main>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ================= state ================= */
+const DIM_ICON = { legal:"⚖", medical:"⚕" };
+const now = () => new Date().toISOString();
+
+function mkOrg(name, dims){ return { name, dims, claims:[], blocks:[], pages:[], prompts:[], samples:[], audit:[] }; }
+const S = {
+  org: "meridian",
+  role: "marketing",
+  view: "dash",
+  orgs: {
+    meridian: mkOrg("Meridian Wealth Advisors (demo)", ["legal"]),
+    veralta:  mkOrg("Veralta Bio (demo)", ["medical","legal"]),
+  },
+};
+const ROLES = { marketing:"Marketing", legal:"Legal / Compliance", medical:"Medical Reviewer", admin:"Admin" };
+
+function seed(){
+  const M = S.orgs.meridian;
+  M.claims = [
+    { id:"c-disclosure", title:"Fee disclosure (required pairing)", text:"Advisory fees are described in Meridian's Form ADV Part 2A. Fees do not include underlying third-party fund expenses.", variants:["Full fee details appear in our Form ADV Part 2A; third-party fund expenses are additional."], sub:"Form ADV Part 2A, Item 5", pair:null, expires:null, matrix:["legal"], granted:{legal:"Dana Reyes"}, status:"approved" },
+    { id:"c-fee", title:"Flat advisory fee — 0.75% AUM", text:"Meridian charges a flat annual advisory fee of 0.75% of assets under management.", variants:["Our advisory fee is a flat 0.75% of AUM per year — no tiers, no hidden charges."], sub:"Form ADV Part 2A, Item 5", pair:"c-disclosure", expires:null, matrix:["legal"], granted:{legal:"Dana Reyes"}, status:"approved" },
+    { id:"c-fiduciary", title:"Fee-only SEC-registered fiduciary", text:"Meridian Wealth Advisors is a fee-only fiduciary registered with the SEC.", variants:["As a fee-only, SEC-registered fiduciary, Meridian is compensated only by clients — never by commissions."], sub:"SEC IAPD registration record", pair:null, expires:null, matrix:["legal"], granted:{legal:"Dana Reyes"}, status:"approved" },
+    { id:"c-expense", title:"Client fund-expense reduction (unsubstantiated)", text:"Clients typically reduce their total underlying fund expenses within the first year.", variants:[], sub:"No substantiation on file yet", pair:null, expires:null, matrix:["legal"], granted:{}, status:"in_review" },
+    { id:"c-award", title:"2024 'Top RIA' award (EXPIRED)", text:"Meridian was named a 2024 'Top RIA' by ExampleRating.", variants:[], sub:"Usage rights expired Jan 1, 2026", pair:null, expires:"2026-01-01", matrix:["legal"], granted:{legal:"Dana Reyes"}, status:"approved" },
+  ];
+  M.blocks = [ { id:"b1", q:"Is Meridian Wealth Advisors a fiduciary?", segs:[{t:"claim",id:"c-fiduciary",v:0}], status:"approved", reason:null } ];
+  M.prompts = ["What is a fee-only fiduciary financial advisor?","How much does a wealth advisor charge in fees?","Is Meridian Wealth Advisors a fiduciary?","Best fee-only financial advisor for retirement planning"];
+  M.audit = [ aud("Dana Reyes (Legal)","claim.approved_legal","Fee disclosure"), aud("Dana Reyes (Legal)","claim.approved_legal","Flat advisory fee"), aud("system","block.auto_approved","composed entirely of approved claims") ];
+
+  const V = S.orgs.veralta;
+  V.claims = [
+    { id:"v-isi", title:"Important Safety Information (required pairing)", text:"VERAX (verafinib) may cause serious side effects. See full Prescribing Information, including Boxed Warning.", variants:[], sub:"Full Prescribing Information v4.2", pair:null, expires:null, matrix:["medical","legal"], granted:{medical:"Dr. Priya Shah",legal:"Marcus Webb"}, status:"approved" },
+    { id:"v-dosing", title:"Once-daily oral dosing", text:"VERAX is taken orally once daily, with or without food.", variants:["One pill, once a day — with or without food."], sub:"PI Section 2 (Dosage and Administration)", pair:"v-isi", expires:null, matrix:["medical","legal"], granted:{medical:"Dr. Priya Shah",legal:"Marcus Webb"}, status:"approved" },
+    { id:"v-efficacy", title:"VX-2 trial response rate", text:"In the VX-2 trial, 68% of patients achieved the primary endpoint at 12 weeks versus 41% on placebo.", variants:[], sub:"VX-2 pivotal trial (p<0.001)", pair:"v-isi", expires:null, matrix:["medical","legal"], granted:{medical:"Dr. Priya Shah"}, status:"in_review" },
+  ];
+  V.prompts = ["How is VERAX taken?","What are the side effects of verafinib?"];
+  V.audit = [ aud("Dr. Priya Shah (Medical)","claim.approved_medical","VX-2 trial response rate") ];
+}
+function aud(actor, action, detail){ return { at: now(), actor, action, detail }; }
+function O(){ return S.orgs[S.org]; }
+function claim(id){ return O().claims.find(c=>c.id===id); }
+function expired(c){ return !!c.expires && new Date(c.expires) <= new Date("2026-07-17"); }
+function pending(c){ return c.matrix.filter(d=>!c.granted[d]); }
+
+/* ================= rules engine (ported from lib/rules.ts) ================= */
+function evaluateBlock(segs){
+  const violations=[]; const reasons=[];
+  const inBlock = new Set(segs.filter(s=>s.t==="claim").map(s=>s.id));
+  if(segs.length===0) violations.push("Block has no content.");
+  for(const s of segs){
+    if(s.t==="claim"){
+      const c = claim(s.id);
+      if(!c){ violations.push("Claim not found."); continue; }
+      if(c.status!=="approved") violations.push(`“${c.title}” is ${c.status.replace("_"," ")}, not approved — it cannot be composed.`);
+      if(expired(c)) violations.push(`“${c.title}” expired ${c.expires} — re-substantiate before use.`);
+      if(c.pair && !inBlock.has(c.pair)){ const p=claim(c.pair); violations.push(`“${c.title}” must appear together with “${p?p.title:c.pair}”.`); }
+    } else if(s.t==="text" && s.text.trim().length>0){
+      if(!reasons.includes("novel-language")) reasons.push("novel-language");
+    }
+  }
+  return { violations, requiresLegalReview: reasons.length>0, reasons };
+}
+function renderSegs(segs){
+  return segs.map(s=>{
+    if(s.t==="text") return s.text.trim();
+    const c=claim(s.id); if(!c) return "";
+    return s.v===0? c.text : (c.variants[s.v-1]||c.text);
+  }).filter(Boolean).join(" ");
+}
+/* deterministic AI drafter (ported from lib/draft.ts) */
+function draftAI(question){
+  const kw = question.toLowerCase().split(/[^a-z0-9.%]+/).filter(w=>w.length>=4);
+  const usable = O().claims.filter(c=>c.status==="approved" && !expired(c));
+  const scored = usable.map(c=>({c, s: kw.filter(k=>(c.title+" "+c.text+" "+c.variants.join(" ")).toLowerCase().includes(k)).length})).filter(x=>x.s>0).sort((a,b)=>b.s-a.s).slice(0,3).map(x=>x.c);
+  const picked = scored.length? scored : usable.slice(0,1);
+  const ids = new Set(picked.map(c=>c.id));
+  for(const c of [...picked]) if(c.pair && !ids.has(c.pair)){ const p=claim(c.pair); if(p && p.status==="approved" && !expired(p)){ picked.push(p); ids.add(p.id);} }
+  return { segs: picked.map(c=>({t:"claim",id:c.id,v:0})), note:`Selected ${picked.length} approved claim(s) by relevance.${picked.length>scored.length?" Required pairing claims added automatically.":""} Claims-only draft → eligible for auto-approval.` };
+}
+/* sampler sim */
+function hash(s){ let h=0; for(let i=0;i<s.length;i++){ h=(h*31 + s.charCodeAt(i))>>>0; } return h; }
+function runSampler(){
+  const org=O();
+  const corpus = org.pages.filter(p=>p.pub).map(p=> (p.title+" "+p.blockIds.map(id=>{const b=org.blocks.find(x=>x.id===id);return b?b.q:"";}).join(" ")).toLowerCase());
+  let n=0;
+  for(const pr of org.prompts){
+    const kws = pr.toLowerCase().split(/[^a-z0-9]+/).filter(w=>w.length>=5);
+    const match = corpus.some(t=>kws.some(k=>t.includes(k)));
+    for(const eng of ["perplexity","google-aio","chatgpt"]){
+      for(let i=0;i<5;i++){
+        const prior = org.samples.filter(x=>x.p===pr&&x.e===eng).length;
+        const cited = (hash(pr+"|"+eng+"|"+prior)%100) < (match? 62 : 12);
+        org.samples.push({p:pr,e:eng,cited,mode:"simulated"});
+        n++;
+      }
+    }
+  }
+  org.audit.unshift(aud(me(),"sampler.ran",n+" samples"));
+  toast(n+" samples recorded (simulated engines — clearly labeled, like the real app without API keys).");
+}
+function me(){ return ({marketing:"Sam (Marketing)",legal: S.org==="veralta"?"Marcus Webb (Legal)":"Dana Reyes (Legal)",medical:"Dr. Priya Shah (Medical)",admin:"Jason (Admin)"})[S.role]; }
+function canDim(d){ return S.role==="admin" || S.role===d; }
+
+/* ================= actions ================= */
+let comp = { q:"", segs:[], note:null, violations:[] };
+function addClaimSeg(id){ if(id) comp.segs.push({t:"claim",id,v:0}); render(); }
+function addTextSeg(){ comp.segs.push({t:"text",text:""}); render(); }
+function submitBlock(){
+  const ev = evaluateBlock(comp.segs);
+  comp.violations = ev.violations;
+  if(!comp.q.trim()) comp.violations = ["A block needs the question it answers.", ...ev.violations];
+  if(comp.violations.length){ render(); return; }
+  const id = "b"+(O().blocks.length+1)+Math.floor(Math.random()*999);
+  const status = ev.requiresLegalReview? "in_review":"approved";
+  O().blocks.unshift({ id, q:comp.q.trim(), segs:comp.segs, status, reason: ev.requiresLegalReview? ev.reasons.join(","):null });
+  O().audit.unshift(aud(me(), ev.requiresLegalReview? "block.routed_to_review":"block.auto_approved", comp.q.trim()));
+  toast(ev.requiresLegalReview? "Routed to legal review (novel language)." : "AUTO-APPROVED — composed entirely of approved claims. Zero review cycles.");
+  comp = { q:"", segs:[], note:null, violations:[] };
+  S.view="review"; render();
+}
+function approveClaimDim(cid, d){
+  const c = claim(cid);
+  if(!canDim(d)){ toast(`Role '${S.role}' cannot approve the '${d}' dimension — the server enforces this with a 403.`); return; }
+  c.granted[d] = me();
+  O().audit.unshift(aud(me(),"claim.approved_"+d, c.title));
+  if(pending(c).length===0){ c.status="approved"; O().audit.unshift(aud(me(),"claim.fully_approved", c.title)); toast("Matrix complete — claim fully approved and now composable."); }
+  else toast(`${DIM_ICON[d]} ${d} approved. Still awaiting: ${pending(c).join(", ")}. Claim remains uncomposable until the matrix completes.`);
+  render();
+}
+function approveBlock(bid){
+  if(!(S.role==="legal"||S.role==="admin")){ toast("Only legal (or admin) can approve flagged blocks."); return; }
+  const b=O().blocks.find(x=>x.id===bid); b.status="approved";
+  O().audit.unshift(aud(me(),"block.approved_by_legal",b.q));
+  toast("Block approved by legal."); render();
+}
+function createPage(title, ids){
+  if(!title.trim()||ids.length===0){ toast("Give the page a title and pick at least one approved block."); return; }
+  O().pages.unshift({ id:"pg"+O().pages.length, title:title.trim(), blockIds:ids, pub:false });
+  O().audit.unshift(aud(me(),"page.created",title.trim())); render();
+}
+function publishPage(pid){
+  const p=O().pages.find(x=>x.id===pid);
+  for(const bid of p.blockIds){
+    const b=O().blocks.find(x=>x.id===bid);
+    const ev=evaluateBlock(b.segs);
+    if(b.status!=="approved" || ev.violations.length){ toast("Publish blocked by the rules engine: "+(ev.violations[0]||"block not approved")+" (re-validated at publish time)"); return; }
+  }
+  p.pub=true; O().audit.unshift(aud(me(),"page.published",p.title));
+  toast("Published — with FAQ JSON-LD and an llms.txt entry, like the real app."); render();
+}
+
+/* ================= views ================= */
+function pillFor(st){ const m={approved:"p-mint",published:"p-mint",in_review:"p-amber",draft:"p-gray",expired:"p-red"}; return `<span class="pill ${m[st]||"p-gray"}">${st.replace("_"," ")}</span>`; }
+function matrixChips(c){ return c.matrix.map(d=> c.granted[d]? `<span class="pill p-mint">${DIM_ICON[d]} ${d} ✓ ${c.granted[d].split(" (")[0]}</span>` : `<span class="pill p-amber">${DIM_ICON[d]} ${d} pending</span>`).join(" "); }
+
+const V = {
+dash(){
+  const o=O();
+  const auto = o.audit.filter(a=>a.action==="block.auto_approved").length;
+  const legal = o.audit.filter(a=>a.action==="block.approved_by_legal").length;
+  const cited = o.samples.filter(s=>s.cited).length, tot=o.samples.length;
+  return `<h1>Dashboard</h1><p class="sub">${o.name} · you are <b>${ROLES[S.role]}</b></p>
+  <div class="grid4">
+    <div class="card"><div class="muted">APPROVED CLAIMS</div><div class="stat">${o.claims.filter(c=>c.status==="approved"&&!expired(c)).length}/${o.claims.length}</div></div>
+    <div class="card"><div class="muted">ANSWER BLOCKS</div><div class="stat">${o.blocks.length}</div></div>
+    <div class="card"><div class="muted">AWAITING REVIEW</div><div class="stat">${o.claims.filter(c=>c.status==="in_review").length + o.blocks.filter(b=>b.status==="in_review").length}</div></div>
+    <div class="card"><div class="muted">PUBLISHED PAGES</div><div class="stat">${o.pages.filter(p=>p.pub).length}</div></div>
+  </div>
+  <div class="grid2">
+    <div class="card"><div class="muted">METER 1 · REVIEW VELOCITY</div><div class="stat">${auto+legal? Math.round(auto/(auto+legal)*100)+"%":"—"}</div><div class="muted">of blocks shipped with <b>zero review cycles</b> (${auto} auto · ${legal} via legal)</div></div>
+    <div class="card"><div class="muted">METER 2 · CITATION RATE</div><div class="stat">${tot? Math.round(cited/tot*100)+"%":"—"}</div><div class="muted">${tot? cited+"/"+tot+" samples cite your pages":"run the sampler in Citations"}</div></div>
+  </div>
+  <div class="card"><h2>Audit trail (latest)</h2>${o.audit.slice(0,9).map(a=>`<div class="audit-line"><b>${a.actor}</b> · ${a.action} · <span class="muted">${a.detail||""}</span></div>`).join("")||'<span class="muted">No events yet.</span>'}
+  <div class="muted" style="margin-top:8px">In the production app this trail is append-only — no edit or delete path exists.</div></div>`;
+},
+claims(){
+  const o=O();
+  return `<h1>Claim Library</h1><p class="sub">Approved once by your reviewers — reused forever. Try switching your role (top bar) to see who can approve what.</p>
+  ${o.claims.map(c=>`<div class="card">
+    <div class="row" style="justify-content:space-between"><b>${c.title}</b>${pillFor(expired(c)?"expired":c.status)}</div>
+    <div style="font-size:13px;margin:6px 0">${c.text}</div>
+    <div class="muted">Substantiation: ${c.sub}${c.pair? ` · <span style="color:var(--amber)">pairing: must publish with “${(claim(c.pair)||{}).title}”</span>`:""}${c.expires? " · expires "+c.expires:""}</div>
+    <div class="row" style="margin-top:8px">${matrixChips(c)}
+    ${c.status==="in_review" ? pending(c).map(d=>`<button class="btn" onclick="approveClaimDim('${c.id}','${d}')">Approve — ${DIM_ICON[d]} ${d}</button>`).join("") : ""}</div>
+  </div>`).join("")}`;
+},
+compose(){
+  const o=O();
+  const approved = o.claims.filter(c=>c.status==="approved");
+  const hasText = comp.segs.some(s=>s.t==="text"&&s.text.trim());
+  return `<h1>Compose an answer block</h1><p class="sub">The AI can only select and order approved claims — it cannot write claim language. Try “How much does it cost?” then Draft with AI.</p>
+  <div class="card">
+    <div class="row"><input type="text" id="q" placeholder="The buyer question this block answers" style="flex:1" value="${comp.q.replace(/"/g,"&quot;")}" oninput="comp.q=this.value">
+    <button class="btn" onclick="comp.q=document.getElementById('q').value; const d=draftAI(comp.q||'fees'); comp.segs=d.segs; comp.note=d.note; render()">✦ Draft with AI</button></div>
+    ${comp.note? `<div class="banner" style="margin-top:8px;color:var(--mintd)"><b>AI draft:</b> ${comp.note}</div>`:""}
+    <div style="margin:12px 0">
+      ${comp.segs.length===0? '<div class="muted" style="border:1.5px dashed rgba(30,39,97,.25);border-radius:10px;padding:16px;text-align:center">Add approved claims below — or let the AI draft. Blocks built only from approved claims publish with no review cycle.</div>':""}
+      ${comp.segs.map((s,i)=> s.t==="claim" ? (()=>{const c=claim(s.id);return `<div class="seg"><button class="x" onclick="comp.segs.splice(${i},1);render()">✕</button><div class="k">Approved claim · verbatim</div><b>${c.title}</b><br><select onchange="comp.segs[${i}].v=+this.value;render()" style="margin-top:4px;max-width:100%">${[c.text,...c.variants].map((t,vi)=>`<option value="${vi}" ${s.v===vi?"selected":""}>${t}</option>`).join("")}</select>${c.pair&&!comp.segs.some(x=>x.t==="claim"&&x.id===c.pair)?`<div style="color:var(--amber);font-size:11.5px;margin-top:4px">Pairing rule: must appear with “${(claim(c.pair)||{}).title}”</div>`:""}</div>`;})() : `<div class="seg text"><button class="x" onclick="comp.segs.splice(${i},1);render()">✕</button><div class="k">Connective text · novel language → routes to legal</div><textarea style="width:100%;margin-top:4px" rows="2" oninput="comp.segs[${i}].text=this.value">${s.text}</textarea></div>`).join("")}
+    </div>
+    <div class="row">
+      <select id="pick"><option value="">Add an approved claim…</option>${approved.map(c=>`<option value="${c.id}">${c.title}</option>`).join("")}</select>
+      <button class="btn2" onclick="addClaimSeg(document.getElementById('pick').value)">+ Claim</button>
+      <button class="btn2" onclick="addTextSeg()">+ Connective text</button>
+    </div>
+  </div>
+  ${comp.violations.length? `<div class="violate"><b>The rules engine blocked this composition:</b><br>${comp.violations.join("<br>")}</div>`:""}
+  <div class="card row" style="justify-content:space-between">
+    <span class="muted">${hasText? "Contains novel language → will route to the legal review queue." : "Composed entirely of approved claims → will auto-approve with a full audit record."}</span>
+    <button class="btn" onclick="comp.q=document.getElementById('q').value; submitBlock()" ${comp.segs.length?"":"disabled"}>Submit block</button>
+  </div>
+  <p class="muted">Try to break it: submit the fee claim without its disclosure, or (in Meridian) the expired award claim — the engine refuses both.</p>`;
+},
+review(){
+  const o=O();
+  const cs=o.claims.filter(c=>c.status==="in_review"), bs=o.blocks.filter(b=>b.status==="in_review");
+  return `<h1>Review Queue</h1><p class="sub">Only exceptions land here. You are <b>${ROLES[S.role]}</b> — buttons appear only for dimensions your role can grant.</p>
+  <div class="card"><h2>Claims awaiting approval (${cs.length})</h2>
+  ${cs.map(c=>`<div class="row" style="justify-content:space-between;padding:8px 0;border-bottom:1px solid #eef1f8"><div><b>${c.title}</b><div class="muted">${c.sub}</div><div style="margin-top:4px">${matrixChips(c)}</div></div><div class="row">${pending(c).filter(d=>canDim(d)).map(d=>`<button class="btn" onclick="approveClaimDim('${c.id}','${d}')">Approve ${DIM_ICON[d]}</button>`).join("")||'<span class="muted">awaiting '+pending(c).join(" + ")+"</span>"}</div></div>`).join("")||'<span class="muted">Queue is empty.</span>'}</div>
+  <div class="card"><h2>Blocks with novel language (${bs.length})</h2>
+  ${bs.map(b=>`<div class="row" style="justify-content:space-between;padding:8px 0;border-bottom:1px solid #eef1f8"><div><b>${b.q}</b><div class="muted" style="color:var(--amber)">flag: ${b.reason}</div><div class="muted" style="margin-top:3px">${renderSegs(b.segs)}</div></div><button class="btn" onclick="approveBlock('${b.id}')">Approve (legal)</button></div>`).join("")||'<span class="muted">Queue is empty.</span>'}</div>`;
+},
+pages(){
+  const o=O();
+  const approved=o.blocks.filter(b=>b.status==="approved");
+  return `<h1>Answer Pages</h1><p class="sub">Approved blocks assemble into public pages with FAQ JSON-LD. Publish re-runs the rules engine — expiry can change after approval.</p>
+  <div class="card"><h2>New page</h2>
+    <div class="row"><input type="text" id="pt" placeholder="Page title" style="flex:1">
+    <button class="btn" onclick="createPage(document.getElementById('pt').value, [...document.querySelectorAll('.bpick:checked')].map(x=>x.value))">Create page</button></div>
+    <div style="margin-top:8px">${approved.map(b=>`<label style="display:block;font-size:13px;padding:3px 0"><input type="checkbox" class="bpick" value="${b.id}"> ${b.q}</label>`).join("")||'<span class="muted">No approved blocks yet — compose one first.</span>'}</div>
+  </div>
+  ${o.pages.map(p=>`<div class="card">
+    <div class="row" style="justify-content:space-between"><b>${p.title}</b>${p.pub? pillFor("published"):pillFor("draft")}
+    ${p.pub? "" : `<button class="btn" onclick="publishPage('${p.id}')">Publish</button>`}</div>
+    ${p.pub? `<div class="pub" style="margin-top:10px"><div class="muted" style="letter-spacing:.1em;font-weight:800;color:var(--mintd)">${o.name.toUpperCase()}</div>
+      ${p.blockIds.map(id=>{const b=o.blocks.find(x=>x.id===id);return `<h3>${b.q}</h3><div style="font-size:13.5px;line-height:1.6">${renderSegs(b.segs)}</div>`;}).join("")}
+      <div class="muted" style="margin-top:12px;border-top:1px solid var(--line);padding-top:8px">Every statement composed from claims approved through your compliance process, with a full audit trail.</div>
+      <details style="margin-top:8px"><summary class="muted" style="cursor:pointer">View the FAQPage JSON-LD engines see</summary><pre>${JSON.stringify({"@context":"https://schema.org","@type":"FAQPage",mainEntity:p.blockIds.map(id=>{const b=o.blocks.find(x=>x.id===id);return {"@type":"Question",name:b.q,acceptedAnswer:{"@type":"Answer",text:renderSegs(b.segs)}};})},null,1)}</pre></details></div>`:""}
+  </div>`).join("")}`;
+},
+cite(){
+  const o=O();
+  const engines=["perplexity","google-aio","chatgpt"];
+  return `<h1>Citation Tracking</h1><p class="sub">AI answers are non-deterministic — we report citation <b>rate over repeated samples</b>, never one screenshot. Publish a page first, then sample: watch matching prompts jump.</p>
+  <div class="card row" style="justify-content:space-between"><span class="muted">${o.prompts.length} prompts × 3 engines × 5 samples per run · <span class="pill p-gray">simulated</span> in the sandbox</span><button class="btn" onclick="runSampler();render()">Run sampler</button></div>
+  <div class="card"><table><tr><th>Prompt</th>${engines.map(e=>`<th>${e}</th>`).join("")}</tr>
+  ${o.prompts.map(pr=>`<tr><td style="max-width:280px">${pr}</td>${engines.map(e=>{const xs=o.samples.filter(s=>s.p===pr&&s.e===e);if(!xs.length)return '<td class="muted">no samples</td>';const c=xs.filter(x=>x.cited).length;return `<td><span class="stat" style="font-size:18px">${Math.round(c/xs.length*100)}%</span> <span class="muted">(${c}/${xs.length})</span></td>`;}).join("")}</tr>`).join("")}</table></div>`;
+},
+};
+
+/* ================= shell ================= */
+function toast(msg){ const t=document.getElementById("toast"); t.textContent=msg; t.style.opacity=1; clearTimeout(t._h); t._h=setTimeout(()=>t.style.opacity=0, 4200); }
+function render(){
+  document.querySelectorAll(".nav").forEach(b=>b.classList.toggle("on", b.dataset.v===S.view));
+  const orgSel=document.getElementById("orgSel");
+  orgSel.innerHTML = Object.entries(S.orgs).map(([k,o])=>`<option value="${k}" ${S.org===k?"selected":""}>${o.name}</option>`).join("");
+  const roles = ["marketing","legal",...(S.org==="veralta"?["medical"]:[]),"admin"];
+  if(!roles.includes(S.role)) S.role="marketing";
+  document.getElementById("roleSel").innerHTML = roles.map(r=>`<option value="${r}" ${S.role===r?"selected":""}>${ROLES[r]}</option>`).join("");
+  document.getElementById("roleHint").textContent = S.role==="marketing"? "(can compose, cannot approve)" : S.role==="admin"? "(can approve any dimension)" : `(approves the ${S.role} dimension only)`;
+  document.getElementById("view").innerHTML = V[S.view]();
+}
+document.querySelectorAll(".nav").forEach(b=>b.onclick=()=>{S.view=b.dataset.v;render();});
+document.getElementById("orgSel").onchange=e=>{S.org=e.target.value; comp={q:"",segs:[],note:null,violations:[]}; render();};
+document.getElementById("roleSel").onchange=e=>{S.role=e.target.value; render();};
+seed(); render();
+</script>
+</body>
+</html>
