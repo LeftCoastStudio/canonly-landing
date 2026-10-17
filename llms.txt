@@ -1,0 +1,25 @@
+# Canonly
+
+> Canonly is the governed content system for regulated brands: legal approves claims and content blocks once, marketing composes freely, and AI answers cite the result.
+
+Canonly (a working name pending trademark clearance) is a Left Coast Agency spinout founded by Jason Garrett. It serves pharma and health brands (MLR review, OPDP), banking and fintech (UDAAP, FTC Act Section 5), insurance (state advertising rules), and wealth and advisory firms (SEC Marketing Rule, FINRA Rule 2210). The product holds a claim and content-block library with substantiation and expiry, a governed composer that enforces required pairings such as safety information and disclosures, exception-only legal review with an append-only audit trail, and measurement of AI citation lift and review-cycle compression. It is onboarding design partners as of October 2026.
+
+## Guides
+
+- [How regulated brands get cited in AI answers](https://canonly.netlify.app/ai-citations-regulated-brands/): Why regulated brands are absent from AI answers, what answer engines reward, the review-once, compose-freely model, answer-block anatomy, and two-meter measurement.
+- [MLR review and AI search](https://canonly.netlify.app/mlr-review-ai-search/): How pharma marketing gets cited without breaking OPDP rules: pre-approved claim libraries, ISI pairing, substantiation, Form FDA 2253, and expiry on label change.
+- [FINRA 2210 and the SEC Marketing Rule in AI answers](https://canonly.netlify.app/finra-2210-ai-answers/): How wealth and advisory brands show up compliantly: principal-approved blocks that carry performance, testimonial and fee disclosures, plus the records examiners expect.
+
+## Playbook
+
+- [The Compliance-Approved AEO Playbook](https://canonly.netlify.app/playbook/): Chapter summaries of the operating manual for winning AI citations when every sentence needs legal review; the full PDF with templates and vertical annexes is available by email.
+
+## Company
+
+- [Home](https://canonly.netlify.app/): Product overview, how it works, who it is for, and the early-access form for design partners.
+- [About](https://canonly.netlify.app/about/): Jason Garrett, founder of Left Coast Agency / Coast Studio, a compliance-first growth agency for regulated industries since 2019; the design-partner program; contact.
+
+## Optional
+
+- [Coast Studio](https://coast.studio/): The parent agency's site, with its library on HIPAA-compliant ad tracking and Meta health advertising restrictions.
+- [Jason Garrett on LinkedIn](https://www.linkedin.com/in/jasonjgarrett/): Founder profile.
