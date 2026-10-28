@@ -6,24 +6,24 @@ Canonly (a working name pending trademark clearance) is a Left Coast Agency spin
 
 ## Guides
 
-- [How regulated brands get cited in AI answers](https://canonly.netlify.app/ai-citations-regulated-brands/): Why regulated brands are absent from AI answers, what answer engines reward, the review-once, compose-freely model, answer-block anatomy, and two-meter measurement.
-- [MLR review and AI search](https://canonly.netlify.app/mlr-review-ai-search/): How pharma marketing gets cited without breaking OPDP rules: pre-approved claim libraries, ISI pairing, substantiation, Form FDA 2253, and expiry on label change.
-- [FINRA 2210 and the SEC Marketing Rule in AI answers](https://canonly.netlify.app/finra-2210-ai-answers/): How wealth and advisory brands show up compliantly: principal-approved blocks that carry performance, testimonial and fee disclosures, plus the records examiners expect.
-- [Telehealth and Rx DTC brands in AI answers](https://canonly.netlify.app/telehealth-ai-search/): How prescription telehealth brands get cited for the questions patients ask, with approved claims, paired safety language and answer blocks.
-- [FINRA Notice 26-14 and AI search](https://canonly.netlify.app/finra-26-14-ai-search/): What FINRA's July 2026 risk-based review proposal for Rule 2210 would mean for broker-dealer content that AI answer engines cite.
+- [How regulated brands get cited in AI answers](https://getcanonly.com/ai-citations-regulated-brands/): Why regulated brands are absent from AI answers, what answer engines reward, the review-once, compose-freely model, answer-block anatomy, and two-meter measurement.
+- [MLR review and AI search](https://getcanonly.com/mlr-review-ai-search/): How pharma marketing gets cited without breaking OPDP rules: pre-approved claim libraries, ISI pairing, substantiation, Form FDA 2253, and expiry on label change.
+- [FINRA 2210 and the SEC Marketing Rule in AI answers](https://getcanonly.com/finra-2210-ai-answers/): How wealth and advisory brands show up compliantly: principal-approved blocks that carry performance, testimonial and fee disclosures, plus the records examiners expect.
+- [Telehealth and Rx DTC brands in AI answers](https://getcanonly.com/telehealth-ai-search/): How prescription telehealth brands get cited for the questions patients ask, with approved claims, paired safety language and answer blocks.
+- [FINRA Notice 26-14 and AI search](https://getcanonly.com/finra-26-14-ai-search/): What FINRA's July 2026 risk-based review proposal for Rule 2210 would mean for broker-dealer content that AI answer engines cite.
 
 ## Tools
 
-- [AI Citation Check](https://canonly.netlify.app/citation-check/): A free self-serve check of whether ChatGPT, Perplexity and Google AI Mode cite a regulated brand for ten buyer questions in its category.
+- [AI Citation Check](https://getcanonly.com/citation-check/): A free self-serve check of whether ChatGPT, Perplexity and Google AI Mode cite a regulated brand for ten buyer questions in its category.
 
 ## Playbook
 
-- [The Compliance-Approved AEO Playbook](https://canonly.netlify.app/playbook/): Chapter summaries of the operating manual for winning AI citations when every sentence needs legal review; the full PDF with templates and vertical annexes is available by email.
+- [The Compliance-Approved AEO Playbook](https://getcanonly.com/playbook/): Chapter summaries of the operating manual for winning AI citations when every sentence needs legal review; the full PDF with templates and vertical annexes is available by email.
 
 ## Company
 
-- [Home](https://canonly.netlify.app/): Product overview, how it works, who it is for, and the early-access form for design partners.
-- [About](https://canonly.netlify.app/about/): Jason Garrett, founder of Left Coast Agency / Coast Studio, a compliance-first growth agency for regulated industries since 2019; the design-partner program; contact.
+- [Home](https://getcanonly.com/): Product overview, how it works, who it is for, and the early-access form for design partners.
+- [About](https://getcanonly.com/about/): Jason Garrett, founder of Left Coast Agency / Coast Studio, a compliance-first growth agency for regulated industries since 2019; the design-partner program; contact.
 
 ## Optional
 

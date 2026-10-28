@@ -16,3 +16,11 @@
 # Note: no redirect rules. Netlify serves the root-level 404.html for missing
 # paths automatically, and a catch-all redirect swallows form POSTs to "/"
 # (files only shadow redirects for GET requests). Learned the hard way.
+
+# Send the old Netlify subdomain to the real domain. Host-scoped, so it never
+# touches form POSTs on getcanonly.com.
+[[redirects]]
+  from = "https://canonly.netlify.app/*"
+  to = "https://getcanonly.com/:splat"
+  status = 301
+  force = true
