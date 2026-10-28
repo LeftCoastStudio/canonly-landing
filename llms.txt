@@ -2,13 +2,19 @@
 
 > Canonly is the governed content system for regulated brands: legal approves claims and content blocks once, marketing composes freely, and AI answers cite the result.
 
-Canonly (a working name pending trademark clearance) is a Left Coast Agency spinout founded by Jason Garrett. It serves pharma and health brands (MLR review, OPDP), banking and fintech (UDAAP, FTC Act Section 5), insurance (state advertising rules), and wealth and advisory firms (SEC Marketing Rule, FINRA Rule 2210). The product holds a claim and content-block library with substantiation and expiry, a governed composer that enforces required pairings such as safety information and disclosures, exception-only legal review with an append-only audit trail, and measurement of AI citation lift and review-cycle compression. It is onboarding design partners as of October 2026.
+Canonly (a working name pending trademark clearance) is a Left Coast Agency spinout founded by Jason Garrett. It serves telehealth and Rx DTC brands (FTC, FDA and platform ad rules), pharma and health brands (MLR review, OPDP), banking and fintech (UDAAP, FTC Act Section 5), insurance (state advertising rules), and wealth and advisory firms (SEC Marketing Rule, FINRA Rule 2210). The product holds a claim and content-block library with substantiation and expiry, a governed composer that enforces required pairings such as safety information and disclosures, exception-only legal review with an append-only audit trail, and measurement of AI citation lift and review-cycle compression. It is onboarding design partners as of October 2026.
 
 ## Guides
 
 - [How regulated brands get cited in AI answers](https://canonly.netlify.app/ai-citations-regulated-brands/): Why regulated brands are absent from AI answers, what answer engines reward, the review-once, compose-freely model, answer-block anatomy, and two-meter measurement.
 - [MLR review and AI search](https://canonly.netlify.app/mlr-review-ai-search/): How pharma marketing gets cited without breaking OPDP rules: pre-approved claim libraries, ISI pairing, substantiation, Form FDA 2253, and expiry on label change.
 - [FINRA 2210 and the SEC Marketing Rule in AI answers](https://canonly.netlify.app/finra-2210-ai-answers/): How wealth and advisory brands show up compliantly: principal-approved blocks that carry performance, testimonial and fee disclosures, plus the records examiners expect.
+- [Telehealth and Rx DTC brands in AI answers](https://canonly.netlify.app/telehealth-ai-search/): How prescription telehealth brands get cited for the questions patients ask, with approved claims, paired safety language and answer blocks.
+- [FINRA Notice 26-14 and AI search](https://canonly.netlify.app/finra-26-14-ai-search/): What FINRA's July 2026 risk-based review proposal for Rule 2210 would mean for broker-dealer content that AI answer engines cite.
+
+## Tools
+
+- [AI Citation Check](https://canonly.netlify.app/citation-check/): A free self-serve check of whether ChatGPT, Perplexity and Google AI Mode cite a regulated brand for ten buyer questions in its category.
 
 ## Playbook
 

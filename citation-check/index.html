@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Citation Check for Regulated Brands: Is Your Brand in the AI Answer? | Canonly</title>
+<meta name="description" content="Free AI Citation Check: see whether ChatGPT, Perplexity and Google AI Mode cite your brand for the questions your buyers ask. Built for telehealth, pharma, banking, insurance and wealth brands.">
+<link rel="canonical" href="https://canonly.netlify.app/citation-check/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Canonly">
+<meta property="og:title" content="AI Citation Check for regulated brands">
+<meta property="og:description" content="Free AI Citation Check: see whether ChatGPT, Perplexity and Google AI Mode cite your brand for the questions your buyers ask. Built for telehealth, pharma, banking, insurance and wealth brands.">
+<meta property="og:url" content="https://canonly.netlify.app/citation-check/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI Citation Check for regulated brands">
+<meta name="twitter:description" content="Free AI Citation Check: see whether ChatGPT, Perplexity and Google AI Mode cite your brand for the questions your buyers ask. Built for telehealth, pharma, banking, insurance and wealth brands.">
+<meta name="author" content="Jason Garrett">
+<link rel="stylesheet" href="/css/canonly.css">
+<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@type": "WebApplication",
+ "name": "Canonly AI Citation Check",
+ "url": "https://canonly.netlify.app/citation-check/",
+ "applicationCategory": "BusinessApplication",
+ "operatingSystem": "Any",
+ "offers": {
+  "@type": "Offer",
+  "price": "0",
+  "priceCurrency": "USD"
+ },
+ "description": "A free self-serve check of whether ChatGPT, Perplexity and Google AI Mode cite a regulated brand for its category's buyer questions.",
+ "publisher": {
+  "@type": "Organization",
+  "name": "Canonly",
+  "url": "https://canonly.netlify.app/",
+  "description": "Canonly is the governed content system for regulated brands: legal approves claims and content blocks once, marketing composes freely, and AI answers cite the result."
+ }
+}</script>
+<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "How do I check whether AI answers cite my brand?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Ask each answer engine the questions your buyers ask about your category, then record whether your brand is cited as a source, mentioned without a link, or absent. Canonly's free Citation Check generates ten category questions with one-click links for ChatGPT, Perplexity and Google AI Mode, then scores the results."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Why are regulated brands missing from AI answers?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Answer engines favor content that is specific, structured and current. Regulated brands route every sentence through legal, medical or compliance review, so they publish less, and third-party sites answer buyer questions on their behalf."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does Canonly see my answers?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. The check runs in your browser and your own answer-engine sessions. Canonly receives your score only if you submit the form."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Why check three engines?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "ChatGPT, Perplexity and Google AI Mode retrieve sources differently, and a brand can lead in one while it is absent from the others."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What is Canonly?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Canonly is the governed content system for regulated brands: legal approves claims and content blocks once, marketing composes freely, and AI answers cite the result."
+   }
+  }
+ ]
+}</script>
+<style>
+.tool{background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px;margin:0 0 28px;box-shadow:0 18px 40px -28px rgba(30,39,97,.35)}
+.tool h2{margin-top:0}
+.tool label.f{display:block;font-size:14px;font-weight:700;color:var(--navy);margin:14px 0 6px}
+.tool input[type=text],.tool input[type=email],.tool select{width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:8px;font-size:15px;background:#fff;color:var(--ink)}
+.tool input:focus,.tool select:focus{outline:2px solid var(--mint);border-color:transparent}
+.tool .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){.tool .row{grid-template-columns:1fr}.tool{padding:20px}}
+.tool .btn{margin-top:18px}
+.cq{border-top:1px solid var(--line);padding:16px 0}
+.cq:first-child{border-top:0}
+.cq .qt{font-weight:700;color:var(--navy)}
+.cq .links{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 6px}
+.article .cq .links a{border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:13px}
+.seg{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:6px;font-size:14px}
+.seg .en{width:120px;color:var(--gray)}
+.seg label{border:1px solid var(--line);border-radius:999px;padding:3px 10px;cursor:pointer;font-size:13px}
+.seg input{margin-right:4px}
+.score{font-family:Georgia,serif;font-size:48px;font-weight:700;color:var(--navy)}
+.hidden{display:none}
+.tool .opt{display:flex;gap:8px;align-items:center;margin-top:14px;font-size:15px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="/">CANONLY<span class="dot">.</span></a>
+    <div class="nav-links">
+      <a href="/#how">How it works</a>
+      <a href="/ai-citations-regulated-brands/">Guides</a>
+      <a href="/citation-check/">Citation Check</a>
+      <a href="/playbook/">The Playbook</a>
+      <a href="/about/">About</a>
+      <a href="#access" class="btn">Request early access</a>
+    </div>
+  </div>
+</nav>
+
+<header class="article-hero">
+  <div class="wrap">
+    <div class="crumbs"><a href="/">Canonly</a><span>/</span>AI Citation Check</div>
+    <h1>Is your brand in the AI answer?</h1>
+    <p class="answer">The Canonly Citation Check takes five minutes. Enter your brand and category, run ten buyer questions through ChatGPT, Perplexity and Google AI Mode, and score who the engines cite. It is free, and it runs in your own browser.</p>
+  </div>
+</header>
+
+<article class="article">
+  <div class="wrap">
+
+<div class="tool" id="setup">
+  <h2>1. Describe your brand</h2>
+  <div class="row">
+    <div><label class="f" for="brand">Brand name</label><input type="text" id="brand" placeholder="e.g. Acme Health" autocomplete="organization"></div>
+    <div><label class="f" for="vertical">Industry</label>
+      <select id="vertical">
+        <option value="telehealth">Telehealth &amp; Rx DTC</option>
+        <option value="pharma">Pharma &amp; Health</option>
+        <option value="banking">Banking &amp; Fintech</option>
+        <option value="insurance">Insurance</option>
+        <option value="wealth">Wealth &amp; Advisory</option>
+      </select></div>
+  </div>
+  <label class="f" for="category">What buyers are shopping for</label>
+  <input type="text" id="category" placeholder="e.g. online GLP-1 weight loss program, high-yield savings account, term life insurance">
+  <button class="btn" id="build" type="button">Build my ten questions</button>
+</div>
+
+<div class="tool hidden" id="questions">
+  <h2>2. Run each question and mark the result</h2>
+  <p>Open each link in a new tab. Mark <b>Cited</b> if the answer links to your site, <b>Mentioned</b> if it names your brand without a link, and <b>Absent</b> if it does neither. Note which sites the engines did cite, because they are your real competition in AI search.</p>
+  <div id="qlist"></div>
+  <button class="btn" id="score" type="button">Score my results</button>
+</div>
+
+<div class="tool hidden" id="result">
+  <h2>3. Your score</h2>
+  <div class="score" id="scoreval">0 / 30</div>
+  <p id="verdict"></p>
+  <p style="color:var(--gray);font-size:14px">Scoring: Cited earns 1 point and Mentioned earns 0.5 points, across ten questions and three engines.</p>
+  <h3>Get the fix plan</h3>
+  <p>Send your result, and Jason will reply with the three answer blocks most likely to move your score, written for the review process you already have.</p>
+  <form name="citation-check" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="citation-check">
+    <p style="display:none"><label>Leave this empty: <input name="bot-field"></label></p>
+    <input type="hidden" name="brand" id="f-brand">
+    <input type="hidden" name="vertical" id="f-vertical">
+    <input type="hidden" name="category" id="f-category">
+    <input type="hidden" name="score" id="f-score">
+    <input type="hidden" name="detail" id="f-detail">
+    <div class="row">
+      <div><label class="f" for="f-name">Name</label><input type="text" id="f-name" name="name" required autocomplete="name"></div>
+      <div><label class="f" for="f-email">Work email</label><input type="email" id="f-email" name="email" required autocomplete="email"></div>
+    </div>
+    <label class="f" for="f-role">Role</label><input type="text" id="f-role" name="role" placeholder="e.g. VP Marketing, MLR lead, compliance">
+    <label class="opt"><input type="checkbox" name="design_partner" value="yes"> I want to be considered as a Canonly design partner</label>
+    <button class="btn" type="submit">Send my result and request early access</button>
+  </form>
+</div>
+
+<h2>Why do regulated brands score low?</h2>
+<p>Answer engines reward content that is specific, structured and current. Regulated brands send every sentence through legal, medical or compliance review, so they publish less, and third-party sites answer buyer questions on their behalf. Canonly fixes the operating model: legal approves claims and content blocks once, marketing composes from them freely, and the engines cite what legal already approved. The full argument is in <a href="/ai-citations-regulated-brands/">how regulated brands get cited in AI answers</a>.</p>
+
+  </div>
+</article>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <h2>Frequently asked questions</h2>
+    <div class="q"><h3>How do I check whether AI answers cite my brand?</h3><p>Ask each answer engine the questions your buyers ask about your category, then record whether your brand is cited as a source, mentioned without a link, or absent. Canonly's free Citation Check generates ten category questions with one-click links for ChatGPT, Perplexity and Google AI Mode, then scores the results.</p></div><div class="q"><h3>Why are regulated brands missing from AI answers?</h3><p>Answer engines favor content that is specific, structured and current. Regulated brands route every sentence through legal, medical or compliance review, so they publish less, and third-party sites answer buyer questions on their behalf.</p></div><div class="q"><h3>Does Canonly see my answers?</h3><p>No. The check runs in your browser and your own answer-engine sessions. Canonly receives your score only if you submit the form.</p></div><div class="q"><h3>Why check three engines?</h3><p>ChatGPT, Perplexity and Google AI Mode retrieve sources differently, and a brand can lead in one while it is absent from the others.</p></div><div class="q"><h3>What is Canonly?</h3><p>Canonly is the governed content system for regulated brands: legal approves claims and content blocks once, marketing composes freely, and AI answers cite the result.</p></div>
+  </div>
+</section>
+
+<section class="related">
+  <div class="wrap">
+    <h2>More from Canonly</h2>
+    <ul><li><a href="/telehealth-ai-search/">Telehealth and Rx DTC brands in AI answers</a><span>Approved claims and paired safety language for the questions patients ask.</span></li><li><a href="/mlr-review-ai-search/">MLR review and AI search</a><span>How pharma marketing gets cited without breaking OPDP rules.</span></li><li><a href="/finra-26-14-ai-search/">FINRA Notice 26-14 and AI search</a><span>What the risk-based review proposal would mean for answer content.</span></li><li><a href="/playbook/">The Compliance-Approved AEO Playbook</a><span>The operating manual for winning AI citations when every sentence needs review.</span></li></ul>
+  </div>
+</section>
+
+<section class="final-cta" id="access">
+  <div class="wrap">
+    <h2>Be one of our first design partners.</h2>
+    <p>We are onboarding a small group of regulated brands to shape the product and prove citation lift together. Early partners get hands-on onboarding and founder access.</p>
+    <form class="form-row" name="early-access" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="early-access">
+      <input type="hidden" name="source" value="citation-check-page">
+      <p style="display:none"><label>Leave this empty: <input name="bot-field"></label></p>
+      <input type="email" name="email" placeholder="Work email" aria-label="Work email" required>
+      <button class="btn" type="submit">Request early access</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div style="max-width:560px">
+      <div class="logo">CANONLY<span class="dot">.</span></div>
+      <div>Canonly is the governed content system for regulated brands: legal approves claims and content blocks once, marketing composes freely, and AI answers cite the result.</div>
+      <div style="margin-top:8px"><a href="mailto:jason@leftcoastagency.com">jason@leftcoastagency.com</a> · A Left Coast Agency company · <a href="/about/">About</a> · <a href="/llms.txt">llms.txt</a></div>
+    </div>
+    <div style="text-align:right;max-width:340px">
+      <div style="color:#fff;font-weight:600;margin-bottom:6px">Working name</div>
+      <div>“Canonly” is a working name pending final trademark clearance. © 2026 Left Coast Agency.</div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="sources">The Citation Check runs entirely in your browser. Scores reflect your own marking of answer-engine results at the time you ran them and are not a measurement by Canonly.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var T = {
+    telehealth: [
+      "What is the best online {c}?",
+      "Is {c} safe and legitimate?",
+      "How much does {c} cost?",
+      "{b} reviews: is it legit?",
+      "{b} vs competitors for {c}",
+      "Does insurance cover {c}?",
+      "What are the side effects to know before starting {c}?",
+      "Which {c} providers are licensed in my state?",
+      "How do I choose a {c} provider?",
+      "What do doctors recommend for {c}?"
+    ],
+    pharma: [
+      "What are the treatment options for {c}?",
+      "Which medication is best for {c}?",
+      "What are the side effects of {b}?",
+      "How does {b} work?",
+      "{b} vs alternatives for {c}",
+      "Is {b} covered by insurance?",
+      "Who should not take {b}?",
+      "How much does {b} cost without insurance?",
+      "What do doctors prescribe first for {c}?",
+      "Is there a savings program for {b}?"
+    ],
+    banking: [
+      "What is the best {c} right now?",
+      "Is {b} a safe bank?",
+      "Is {b} FDIC insured?",
+      "{b} vs competitors for {c}",
+      "What fees does {b} charge?",
+      "How do I choose a {c}?",
+      "{b} reviews",
+      "Which banks offer the best rates on {c}?",
+      "What are the pros and cons of {c}?",
+      "Is {c} worth it?"
+    ],
+    insurance: [
+      "What is the best {c} company?",
+      "How much does {c} cost?",
+      "Is {b} a good insurance company?",
+      "{b} vs competitors for {c}",
+      "How do I choose {c}?",
+      "{b} reviews and complaints",
+      "What does {c} cover?",
+      "Which {c} companies have the best claims experience?",
+      "Do I need {c}?",
+      "How do I compare {c} quotes?"
+    ],
+    wealth: [
+      "How do I find a good {c}?",
+      "Is {b} a fiduciary?",
+      "What does {b} charge?",
+      "{b} vs competitors for {c}",
+      "{b} reviews",
+      "What questions should I ask a {c}?",
+      "Is {b} registered with the SEC or FINRA?",
+      "What is the best {c} for someone my age?",
+      "Is a {c} worth the fee?",
+      "Robo-advisor vs {c}: which is better?"
+    ]
+  };
+  var engines = [
+    {k:"chatgpt", n:"ChatGPT", u:function(q){return "https://chatgpt.com/?q="+encodeURIComponent(q)+"&hints=search";}},
+    {k:"perplexity", n:"Perplexity", u:function(q){return "https://www.perplexity.ai/search?q="+encodeURIComponent(q);}},
+    {k:"google", n:"Google AI Mode", u:function(q){return "https://www.google.com/search?udm=50&q="+encodeURIComponent(q);}}
+  ];
+  var $ = function(id){return document.getElementById(id);};
+  var qs = [];
+  function esc(s){return s.replace(/[&<>"]/g,function(ch){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch];});}
+
+  $("build").addEventListener("click", function(){
+    var b = $("brand").value.trim(), c = $("category").value.trim(), v = $("vertical").value;
+    if(!b || !c){ alert("Enter your brand and what buyers are shopping for."); return; }
+    qs = T[v].map(function(t){return t.replace(/\{b\}/g,b).replace(/\{c\}/g,c);});
+    var html = qs.map(function(q,i){
+      var links = engines.map(function(e){return '<a target="_blank" rel="noopener" href="'+e.u(q)+'">Ask '+e.n+' ↗</a>';}).join("");
+      var segs = engines.map(function(e){
+        var name = "q"+i+"_"+e.k;
+        return '<div class="seg"><span class="en">'+e.n+'</span>'+
+          ['cited','mentioned','absent'].map(function(r){
+            return '<label><input type="radio" name="'+name+'" value="'+r+'"'+(r==='absent'?' checked':'')+'>'+r.charAt(0).toUpperCase()+r.slice(1)+'</label>';
+          }).join("")+'</div>';
+      }).join("");
+      return '<div class="cq"><div class="qt">'+(i+1)+'. '+esc(q)+'</div><div class="links">'+links+'</div>'+segs+'</div>';
+    }).join("");
+    $("qlist").innerHTML = html;
+    $("questions").classList.remove("hidden");
+    $("questions").scrollIntoView({behavior:"smooth"});
+  });
+
+  $("score").addEventListener("click", function(){
+    var pts = 0, detail = [];
+    qs.forEach(function(q,i){
+      var row = [];
+      engines.forEach(function(e){
+        var el = document.querySelector('input[name="q'+i+'_'+e.k+'"]:checked');
+        var r = el ? el.value : 'absent';
+        pts += r==='cited' ? 1 : (r==='mentioned' ? 0.5 : 0);
+        row.push(e.n+": "+r);
+      });
+      detail.push((i+1)+". "+q+" | "+row.join(", "));
+    });
+    var pct = Math.round(pts/30*100);
+    $("scoreval").textContent = pts+" / 30";
+    $("verdict").textContent = pct >= 60
+      ? "The engines already know you. The opportunity is in the questions where third parties still speak for you."
+      : (pct >= 25
+        ? "You show up in some answers and miss most of them. Third-party sites are answering your buyers' questions."
+        : "You are functionally invisible in AI answers for your own category. This is the most common result for regulated brands.");
+    $("f-brand").value = $("brand").value.trim();
+    $("f-vertical").value = $("vertical").value;
+    $("f-category").value = $("category").value.trim();
+    $("f-score").value = pts+"/30";
+    $("f-detail").value = detail.join("\n");
+    $("result").classList.remove("hidden");
+    $("result").scrollIntoView({behavior:"smooth"});
+  });
+})();
+</script>
+</body>
+</html>
